@@ -4,13 +4,13 @@
 			<h2 class="item title">Hoopla! Keine User gefunden.</h2>
 		</div>
 	<?php else: ?>
-		<?php foreach ($haushalte as $user): ?>
+		<?php foreach ($haushalte as $haushalt): ?>
 			<div class="panel panel-default">
-				<div class="panel-heading"><?= $user->firstName;?> <?= $user->lastName;?></div>
+				<div class="panel-heading"><?= $haushalt->name;?> <?= $haushalt->email;?> <?= $haushalt->password;?></div>
 				<div class="panel-body">
-					<p class="description">In der Datenbank existiert ein User mit dem Namen <?= $user->firstName;?> <?= $user->lastName;?>. Dieser hat die EMail-Adresse: <a href="mailto:<?= $user->email;?>"><?= $user->email;?></a></p>
+					<p class="description">In der Datenbank existiert ein User mit dem Namen <?= $haushalt->name;?>. Dieser hat die EMail-Adresse: <a href="mailto:<?= $haushalt->email;?>"><?= $haushalt->email;?></a></p>
 					<p>
-						<a title="Löschen" href="/user/delete?id=<?= $user->id ?>">Löschen</a>
+						<a title="Löschen" href="/user/delete?id=<?= $haushalt->id ?>">Löschen</a>
 					</p>
 				</div>
 			</div>
