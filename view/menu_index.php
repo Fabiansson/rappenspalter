@@ -1,14 +1,16 @@
-<div>
+<div >
     <form method="post" action="">
-        <div>
+        <div class="fgroup">
+        <div class="row">
         <label> Fixe Einnahmen </label>
-        <input type="text" class="form-control" name="fixE">
+        <input type="text" name="fixE">
         </div>
         <div>
         <label> Fixe Ausgaben </label>
-        <input type="text" class="form-control" name="fixA">
+        <input type="text" name="fixA">
         </div>
-        <div>
+        </div>
+        <div class="ok">
         <input type="submit" name="ok" value="OK">
         </div>
     </form>
