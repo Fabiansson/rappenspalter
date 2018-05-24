@@ -21,7 +21,7 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-light bg-light sticky-top">
+<nav class="navbar navbar-light bg-light fixed-top">
     <form class="form-inline">
         <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span
                     class="glyphicon glyphicon-align-justify"></span></button>
@@ -36,7 +36,7 @@
 <div id="logo">
     <img src="../images/logo.png" alt="Rappaspalter">
 </div>
-</body>
+
 
 <div class="container">
 

@@ -1,5 +1,4 @@
-
-        <footer>
+<footer>
           <p>&copy; Debian</p>
         </footer>
     </div>

@@ -48,6 +48,7 @@
                         <input id="add" name="add" type="submit" class="btn" value="+">
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 </div>
