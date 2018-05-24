@@ -1,6 +1,7 @@
 <?php
 
 require_once '../repository/UserRepository.php';
+require_once '../repository/AusgabeRepository.php';
 
 class HaushaltController {
 
@@ -36,10 +37,22 @@ class HaushaltController {
             return;
         }
 
+        $id = $_SESSION['user']->id;
+
+
         $view = new View('haushalt_user');
         $view->title = "Overview";
         $view->heading = "Overview";
         $view->email = $_SESSION['user']->email;
+        $view->name = $_SESSION['user']->name;
+
+        $ausgabenRepo = new AusgabeRepository();
+        $ausgaben = $ausgabenRepo->getAusgaben($id);
+
+        $test = $ausgaben->summe;
+        var_dump($test);
+
+        $view->guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $ausgaben;
         $view->display();
 
     }
