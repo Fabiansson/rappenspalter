@@ -90,7 +90,7 @@ class HaushaltController {
         }
 
         $view = new View('haushalt_menu');
-        $view->title = 'Menu';
+        $view->title = 'Startseite';
         $view->heading = 'Menu';
         $view->display();
     }
