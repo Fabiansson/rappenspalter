@@ -24,9 +24,9 @@
     <form class="form-inline">
         <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"></span> </button>
         <ul class="dropdown-menu">
-            <li><a href="/default/index">Home</a></li>
             <li><a href="/menu/index">Menu</a></li>
-            <li><a href="/budget/index">Budget</a></li>
+            <li><a href="/haushalt/index">Budget</a></li>
+            <li><a href="/haushalt/index">Logout <span class="glyphicon glyphicon-log-out"></span> </a></li>
 
         </ul>
     </form>

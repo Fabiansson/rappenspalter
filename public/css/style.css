@@ -13,9 +13,22 @@ h1 {
   text-align: center;
 }
 
+div {
+  padding: 10px;
+}
+
+.abstand{
+  margin-left: 3%;
+}
+
 input[type="submit" i]{
   padding: 2px 40px;
 }
+
+a {
+  color: #1B3440;
+}
+
 
 footer {
   position: absolute;

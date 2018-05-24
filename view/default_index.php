@@ -19,7 +19,7 @@
                 </div>
             </div>
         </form>
-        <div>
+        <div class="abstand">
         <p> <a href="#">Passwort vergessen?</a></p>
         <p> <a href="/user/create">Neuer Haushalt?</a></p>
         </div>

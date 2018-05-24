@@ -1,28 +1,24 @@
-<form class="form-horizontal" action="/user/doCreate" method="post">
-	<div class="component" data-html="true">
-		<div class="form-group">
-		  <label class="col-md-2 control-label" for="haushalt">Haushalt</label>
-		  <div class="col-md-4">
-		  	<input id="haushalt" name="haushalt" type="text" placeholder="Haushalt" class="form-control input-md">
-		  </div>
-		</div>
-		<div class="form-group">
-		  <label class="col-md-2 control-label" for="email">Mail</label>
-		  <div class="col-md-4">
-		  	<input id="email" name="email" type="text" placeholder="Mail" class="form-control input-md">
-		  </div>
-		</div>
-		<div class="form-group">
-		  <label class="col-md-2 control-label" for="password">Passwort</label>
-		  <div class="col-md-4">
-		  	<input id="password" name="password" type="password" placeholder="Passwort" class="form-control input-md">
-		  </div>
-		</div>
-		<div class="form-group">
-	      <label class="col-md-2 control-label" for="send">&nbsp;</label>
-		  <div class="col-md-4">
-		    <input id="send" name="send" type="submit" class="btn btn-primary">
-		  </div>
-		</div>
-	</div>
-</form>
+
+<div >
+        <form method="post" action="/user/doCreate">
+            <div >
+                <div >
+                    <div>
+                        <label for="username" >Haushalt</label>
+                        <input type="text" class="form-control" name="username" placeholder="haushalt">
+                    </div>
+                    <div >
+                        <label for="email">Mail</label>
+                        <input type="email" class="form-control"  name="mail" placeholder="Mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Passwort</label>
+                        <input type="password" class="form-control"  name="password" placeholder="passwort">
+                    </div>
+                    <div >
+                        <input type="submit" name="login" value="Erstelllen" class=" btn">
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
