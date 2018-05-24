@@ -40,18 +40,19 @@ class HaushaltController {
         $id = $_SESSION['user']->id;
 
 
-        $view = new View('haushalt_user');
+        $view = new View('haushalt_index');
         $view->title = "Overview";
         $view->heading = "Overview";
-        $view->email = $_SESSION['user']->email;
         $view->name = $_SESSION['user']->name;
 
         $ausgabenRepo = new AusgabeRepository();
         $ausgaben = $ausgabenRepo->getAusgaben($id);
-
         $alleAusgaben = $ausgaben->summe;
+        $guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $alleAusgaben;
+        $view->guthaben = $guthaben;
 
-        $view->guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $alleAusgaben;
+        $view->tagesbudget = $guthaben / 30;
+
         $view->display();
 
     }

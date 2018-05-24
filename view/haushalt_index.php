@@ -1,6 +1,15 @@
+<p>
+
+    Guthaben: <?=$guthaben?>
+</p>
+<a href="/haushalt/logout">Logout</a>
+
 <div>
+
+    Willkommen <?=$name?><br>
+
     <div class="row">
-        <p> Budget für Heute: </p>
+        <p> Budget für Heute: <?=$tagesbudget?></p>
     </div>
     <div class="row">
         <p> Letzte Ausgaben: </p>
