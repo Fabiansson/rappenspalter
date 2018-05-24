@@ -24,7 +24,7 @@
                 <input type="text" name="ausgabe" placeholder="CHF">
             </div>
             <div class="col-md-3 dropdown" >
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="kategorie">Kategorie
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="kategorie">Kategorie
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Sonstiges</a></li>
@@ -36,7 +36,7 @@
                 </ul>
             </div>
             <div class="col">
-                <input id="add" name="add" type="submit" class="btn btn-primary" value="+">
+                <input id="add" name="add" type="submit" class="btn" value="+">
             </div>
         </div>
 </div>

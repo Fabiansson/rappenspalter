@@ -1,6 +1,6 @@
-        <hr>
+
         <footer>
-          <p>&copy; ICT Berufsbildungcenter AG 2016</p>
+          <p>&copy; Debian</p>
         </footer>
     </div>
 
