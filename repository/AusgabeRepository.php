@@ -30,4 +30,18 @@ class AusgabeRepository extends Repository
         // Den gefundenen Datensatz zurückgeben
         return $ausgaben;
     }
+
+    public function addAusgabe($wert, $kategorie_id, $haushalt_id){
+
+        $query = "INSERT INTO $this->tableName (wert, datum, kategorie_id, haushalt_id) VALUES (?, ?, ?, ?)";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssss', $wert, date("Y-m-d"), $kategorie_id, $haushalt_id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $statement->insert_id;
+    }
 }
