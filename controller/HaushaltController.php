@@ -66,12 +66,8 @@ class HaushaltController {
             $name = $_POST['username'];
             $password = sha1( $_POST['password'] );
 
-            echo $name;
-
             $userRepo = new UserRepository();
             $user = $userRepo->readByName($name);
-
-            echo $user->name;
 
             if ($user != null && $user->password == $password) {
                 // Login ok
@@ -95,5 +91,21 @@ class HaushaltController {
         session_destroy();
 
         header('Location: /haushalt');
+    }
+
+    public function add(){
+        if(isset($_POST['add']) && isset($_POST['wert']) && isset($_POST['auswahl'])){
+            $wert = $_POST['wert'];
+            if($_POST['auswahl'] == "ausgaben" && isset($_POST['kategorie'])){
+                $ausgabeRepo = new AusgabeRepository();
+                $ausgabeRepo->addAusgabe($wert, $_POST['kategorie'], $_SESSION['user']->id);
+                header("Location: /haushalt/overview");
+            }elseif ($_POST['auswahl'] == "einnahmen"){
+                $einnahmeRepo = new EinnahmeRepository();
+                $einnahmeRepo->addEinnahme($wert, $_SESSION['user']->id);
+                header("Location: /haushalt/overview");
+            }
+
+        }
     }
 }
