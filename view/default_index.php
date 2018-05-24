@@ -9,7 +9,7 @@
                         <label for="username" >Haushalt</label>
                         <input type="text" class="form-control" name="username" placeholder="haushalt">
                     </div>
-                    <div class="form-group">
+                    <div>
                         <label for="password">Passwort</label>
                         <input type="password" class="form-control"  name="password" placeholder="passwort">
                     </div>
