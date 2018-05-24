@@ -3,12 +3,25 @@ body {
   background-color: lightsteelblue;
 }
 
+h1 {
+  text-align: center;
+}
 .fgroup {
   text-align: center;
   margin: 10px;
 }
 .ok {
   text-align: center;
+}
+.labell {
+  text-align: right;
+}
+.field {
+  text-align: left;
+}
+input[type="submit" i]{
+  padding: 2px 40px;
+  color: white;
 }
 
 footer {
