@@ -1,5 +1,5 @@
 <div >
-        <form method="post" action="/haushalt/login">
+        <form method="post" action="">
                 <div >
                     <div>
                         <label for="username" >Fixe Einnahme</label>

@@ -2,6 +2,7 @@
 
 require_once '../repository/UserRepository.php';
 require_once '../repository/AusgabeRepository.php';
+require_once '../repository/EinnahmeRepository.php';
 
 class HaushaltController {
 
@@ -80,6 +81,18 @@ class HaushaltController {
                 return;
             }
         }
+    }
+
+    public function menu(){
+        if (!isset($_SESSION['user'])) {
+            header("Location: /haushalt");
+            return;
+        }
+
+        $view = new View('haushalt_menu');
+        $view->title = 'Menu';
+        $view->heading = 'Menu';
+        $view->display();
     }
 
     /**
