@@ -1,9 +1,12 @@
+nav{
+  margin-left: 20px;
+}
+#logo{
+  text-align: center;
+}
 body {
   padding-top: 40px;
   background-color: #4A849F;
-}
-nav{
-  margin-left: 20px;
 }
 
 h1 {

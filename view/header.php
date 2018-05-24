@@ -31,7 +31,9 @@
         </ul>
     </form>
 </nav>
+<div id="logo">
 <img src="../images/logo.png" alt="Rappaspalter">
+</div>
 </body>
 
     <div class="container">
