@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-4 form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="auswahl">Ausgaben
+                    <input type="radio" class="form-check-input" name="auswahl" value="ausgaben">Ausgaben
                 </label>
             </div>
             <div class="col form-check">
@@ -30,7 +30,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <input type="text" name="ausgabe" placeholder="CHF">
+                <input type="text" name="wert" placeholder="CHF">
             </div>
             <div class="col-md-3 dropdown" >
                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="kategorie">Kategorie
