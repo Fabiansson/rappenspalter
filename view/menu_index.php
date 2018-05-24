@@ -1,7 +1,15 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: bmittd
- * Date: 24.05.2018
- * Time: 09:13
- */
+<div>
+    <form method="post" action="">
+        <div>
+        <label> Fixe Einnahmen </label>
+        <input type="text" class="form-control" name="fixE">
+        </div>
+        <div>
+        <label> Fixe Ausgaben </label>
+        <input type="text" class="form-control" name="fixA">
+        </div>
+        <div>
+        <input type="submit" name="ok" value="OK">
+        </div>
+    </form>
+</div>
