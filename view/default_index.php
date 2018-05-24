@@ -3,7 +3,7 @@
     <div class="login">login</div>
     <!-- Main Form -->
     <div >
-        <form method="post" action="/controller/DefaultController.php">
+        <form method="post" action="/haushalt/login">
             <div >
                 <div >
                     <div>
@@ -15,7 +15,7 @@
                         <input type="password" class="form-control"  name="password" placeholder="passwort">
                     </div>
                     <div >
-                        <input type="submit" name="submit">
+                        <input type="submit" name="login" value="Log in!">
                     </div>
                 </div>
             </div>
