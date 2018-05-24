@@ -7,7 +7,7 @@ class BudgetController{
     {
         $view = new View('budget_index');
         $view->title = 'Startseite';
-        $view->heading = 'rAPPaspalter';
+        $view->heading = 'Budget';
         $view->display();
 
     }

@@ -1,6 +1,5 @@
 
 <div >
-    <div class="login">login</div>
     <!-- Main Form -->
     <div >
         <form method="post" action="/haushalt/login">
@@ -15,7 +14,7 @@
                         <input type="password" class="form-control"  name="password" placeholder="passwort">
                     </div>
                     <div >
-                        <input type="submit" name="login" value="Log in!">
+                        <input type="submit" name="login" value="Log in!" class=" btn btn-primary">
                     </div>
                 </div>
             </div>

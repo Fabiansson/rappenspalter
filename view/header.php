@@ -19,7 +19,19 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"></span> </button>
+        <ul class="dropdown-menu">
+            <li><a href="/default/index">Home</a></li>
+            <li><a href="/menu/index">Menu</a></li>
+            <li><a href="/budget/index">Budget</a></li>
 
+        </ul>
+    </form>
+</nav>
+</body>
 
     <div class="container">
 
