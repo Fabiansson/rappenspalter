@@ -94,11 +94,16 @@ class HaushaltController {
     }
 
     public function add(){
-        if(isset($_POST['add']) && isset($_POST['wert'])){
+        if(isset($_POST['add']) && isset($_POST['wert']) && isset($_POST['auswahl'])){
             $wert = $_POST['wert'];
-            if(isset($_POST['auswahl']) && $_POST['auswahl'] == "einnahmen" && isset($_POST['kategorie'])){
+            if($_POST['auswahl'] == "ausgaben" && isset($_POST['kategorie'])){
                 $ausgabeRepo = new AusgabeRepository();
                 $ausgabeRepo->addAusgabe($wert, $_POST['kategorie'], $_SESSION['user']->id);
+                header("Location: /haushalt/overview");
+            }elseif ($_POST['auswahl'] == "einnahmen"){
+                $einnahmeRepo = new EinnahmeRepository();
+                $einnahmeRepo->addEinnahme($wert, $_SESSION['user']->id);
+                header("Location: /haushalt/overview");
             }
 
         }
