@@ -8,10 +8,10 @@
 
     <div>
         <div id="guthaben">
-        <p>
-             <?= $guthaben ?> CHF
-        </p>
-            </div>
+            <p>
+                <?= $guthaben ?> CHF
+            </p>
+        </div>
         <div class="schrift">
             <p> Budget für Heute: <?= $tagesbudget ?></p>
         </div>
@@ -31,50 +31,23 @@
                     </label>
                 </div>
 
-            <div >
                 <div>
-                            <input type="text" class="form-control" name="chf" value="CHF">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="exampleSelect1" name="kategorie">
-                                <option value="1">Sonstiges</option>
-                                <option value="2">Essen & Trinken</option>
-                                <option value="3">Transport</option>
-                                <option value="4">Bekleidung</option>
-                                <option value="5">Freizeit</option>
-                            </select>
-                        </div>
-                        <div >
-                            <input id="add" name="add" type="submit" class="btn" value="+">
-                        </div>
+                    <div>
+                        <input type="text" class="form-control" name="chf" value="CHF">
                     </div>
-                </form>
-            </div>
-</div>
-
-<!--
-            <div class="row">
-                <div class="col-md-3">
-                    <input type="text" name="ausgabe" placeholder="CHF">
+                    <div class="form-group">
+                        <select class="form-control" id="exampleSelect1" name="kategorie">
+                            <option value="1">Sonstiges</option>
+                            <option value="2">Essen & Trinken</option>
+                            <option value="3">Transport</option>
+                            <option value="4">Bekleidung</option>
+                            <option value="5">Freizeit</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input id="add" name="add" type="submit" class="btn" value="+">
+                    </div>
                 </div>
-                <div class="col-md-3 dropdown">
-                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="kategorie">Kategorie
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Sonstiges</a></li>
-                        <li><a href="#">Essen & Trinken</a></li>
-                        <li><a href="#">Transport</a></li>
-                        <li><a href="#">Bekleidung</a></li>
-                        <li><a href="#">Freizeit</a></li>
-                        <li><a href="#">Geschenke</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <input id="add" name="add" type="submit" class="btn" value="+">
-                </div>
-            </div>
+        </form>
     </div>
-
-    </form>
-</div>
 </div>
