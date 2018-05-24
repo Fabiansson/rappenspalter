@@ -49,10 +49,9 @@ class HaushaltController {
         $ausgabenRepo = new AusgabeRepository();
         $ausgaben = $ausgabenRepo->getAusgaben($id);
 
-        $test = $ausgaben->summe;
-        var_dump($test);
+        $alleAusgaben = $ausgaben->summe;
 
-        $view->guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $ausgaben;
+        $view->guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $alleAusgaben;
         $view->display();
 
     }
