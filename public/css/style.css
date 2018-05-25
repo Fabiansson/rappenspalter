@@ -35,8 +35,8 @@ input[type="submit" i]{
 
 a {
   color: #1B3440;
+  text-decoration-line: underline;
 }
-
 
 footer {
   position: absolute;
@@ -48,7 +48,18 @@ footer {
   padding-left: 10%;
   padding-right: 10%;
 }
-.btn{
+.btn-normal{
   color: #F2845C;
   background-color: #1B3440;
+}
+
+#deleteButton{
+  float: right;
+}
+
+.validation-error {
+  border: 1px solid #FF0000!important;
+}
+.validation-success {
+  border: 1px solid #00FF00;
 }

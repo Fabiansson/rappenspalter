@@ -37,7 +37,7 @@ class Dispatcher
         $uriFragments = explode('/', $uri); // In einzelteile zerlegen
 
         // Den Namen des gewünschten Controllers ermitteln
-        $controllerName = 'DefaultController';
+        $controllerName = 'HaushaltController';
         if (!empty($uriFragments[0])) {
             $controllerName = $uriFragments[0];
             $controllerName = ucfirst($controllerName); // Erstes Zeichen grossschreiben

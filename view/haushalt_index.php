@@ -1,12 +1,5 @@
 <div>
     <div>
-
-        <h1> Willkommen <?= $name ?><br></h1>
-
-    </div>
-
-
-    <div>
         <div id="guthaben">
             <p>
                 <?= $guthaben ?> CHF
@@ -22,7 +15,7 @@
             <div class="row">
                 <div class="col-md-4 form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="auswahl">Ausgaben
+                        <input type="radio" class="form-check-input" name="auswahl" value="ausgaben">Ausgaben
                     </label>
                 </div>
                 <div class="col form-check">
@@ -33,7 +26,7 @@
 
                 <div>
                     <div>
-                        <input type="text" class="form-control" name="chf" value="CHF">
+                        <input type="text" class="form-control" name="wert" value="CHF">
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleSelect1" name="kategorie">
@@ -45,7 +38,7 @@
                         </select>
                     </div>
                     <div>
-                        <input id="add" name="add" type="submit" class="btn" value="+">
+                        <input id="add" name="add" type="submit" class="btn btn-normal" value="+">
                     </div>
                 </div>
             </div>

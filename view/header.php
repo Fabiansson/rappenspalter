@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $title ?> | Bbc MVC</title>
+    <title><?= $title ?> | Rappaspalter</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -21,22 +21,27 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-light bg-light fixed-top">
+<?php if (isset($_SESSION['user'])){
+echo'<nav class="navbar navbar-light bg-light fixed-top">
     <form class="form-inline">
-        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span
+        <button class="btn btn-normal dropdown-toggle" type="button" data-toggle="dropdown"><span
                     class="glyphicon glyphicon-align-justify"></span></button>
         <ul class="dropdown-menu">
+            <li><a href="/haushalt/index">Übersicht</a></li>
             <li><a href="/haushalt/menu">Menu</a></li>
-            <li><a href="/haushalt/index">Overview</a></li>
             <li><a href="/haushalt/logout">Logout <span class="glyphicon glyphicon-log-out"></span> </a></li>
 
         </ul>
     </form>
-</nav>
+</nav>';
+}?>
 <div id="logo">
     <img src="../images/logo.png" alt="Rappaspalter">
 </div>
 
+<?php if($error){
+echo '<div class="alert alert-danger">Error!</div>';
+}?>
 
 <div class="container">
 
