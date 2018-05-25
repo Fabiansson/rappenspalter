@@ -58,7 +58,7 @@ class HaushaltController
                 header('Location: /haushalt');
             }
             else{
-
+                ///////////////////HIER STEHENGEBLIEBEN//////////////////
             }
         }
     }
