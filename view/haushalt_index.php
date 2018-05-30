@@ -22,12 +22,12 @@
             <div class="row">
                 <div class="col-md-4 form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="auswahl" value="ausgaben">Ausgaben
+                        <input type="radio" class="form-check-input" name="auswahl" value="ausgaben" onclick="showDropdown();">Ausgaben
                     </label>
                 </div>
                 <div class="col form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="auswahl" value="einnahmen">Einnahmen
+                        <input type="radio" class="form-check-input" name="auswahl" value="einnahmen" onclick="hideDropdown();">Einnahmen
                     </label>
                 </div>
 
@@ -35,7 +35,7 @@
                     <div>
                         <input type="text" class="form-control" name="wert" value="CHF">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="statusForm">
                         <select class="form-control" id="exampleSelect1" name="kategorie">
                             <option value="1">Sonstiges</option>
                             <option value="2">Essen & Trinken</option>
