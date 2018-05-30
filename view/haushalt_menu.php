@@ -24,7 +24,7 @@
         </div>
     </form>
 <div id="deleteButton">
-    <a href="/user/delete" class="btn btn-danger">Account Löschen</a>
+    <a href="/haushalt/delete" class="btn btn-danger">Account Löschen</a>
 </div>
 
 </div>
