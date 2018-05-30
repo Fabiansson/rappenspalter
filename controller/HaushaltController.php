@@ -29,7 +29,9 @@ class HaushaltController
         $view = new View('default_index');
         $view->title = "Login";
         $view->heading = "Login";
+        $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
         $view->display();
+        unset($_SESSION['error']);
     }
 
     public function create()
@@ -37,7 +39,9 @@ class HaushaltController
         $view = new View('haushalt_create');
         $view->title = 'Haushalt erstellen';
         $view->heading = 'Haushalt erstellen';
+        $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
         $view->display();
+        unset($_SESSION['error']);
     }
 
     public function doCreate()
@@ -58,7 +62,8 @@ class HaushaltController
                 header('Location: /haushalt');
             }
             else{
-                ///////////////////HIER STEHENGEBLIEBEN//////////////////
+                $_SESSION['error'] = "Dieser Benutzername oder Email exisitieren bereits!";
+                $this->create();
             }
         }
     }
@@ -89,6 +94,7 @@ class HaushaltController
         $view->title = "Übresicht";
         $view->heading = "Willkommen " . lcfirst($_SESSION['user']->name);
         $view->name = lcfirst($_SESSION['user']->name);
+        $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
 
         $ausgabenRepo = new AusgabeRepository();
         $ausgaben = $ausgabenRepo->getAusgaben($id);
@@ -104,6 +110,7 @@ class HaushaltController
         $view->tagesbudget = $guthaben / 30;
 
         $view->display();
+        unset($_SESSION['error']);
 
     }
 
@@ -126,7 +133,7 @@ class HaushaltController
                 header("Location: /haushalt/overview");
                 return;
             } else {
-                $_SESSION['error'] = "Login failed";
+                $_SESSION['error'] = "Banutzername oder Passwort ist falsch.";
                 header("Location: /haushalt");
                 return;
             }
@@ -145,7 +152,9 @@ class HaushaltController
         $view->heading = 'Menu';
         $view->mntlAusgaben = $_SESSION['user']->mntlAusgaben;
         $view->mntlEinnahmen = $_SESSION['user']->mntlEinnahmen;
+        $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
         $view->display();
+        unset($_SESSION['error']);
     }
 
     /**

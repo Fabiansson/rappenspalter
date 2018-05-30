@@ -1,4 +1,11 @@
 <div>
+
+        <?php if(isset($_SESSION['error'])){
+            echo '<div class="alert alert-danger">';
+            echo $error;
+            echo '</div>';
+        }?>
+
     <div>
         <div id="guthaben">
             <p>

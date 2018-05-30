@@ -1,4 +1,13 @@
 <div>
+    <?php if(isset($_SESSION['error'])){
+        echo '<div class="alert alert-danger">';
+        echo $error;
+        echo '</div>';
+        $_SESSION['error'] = "";
+    }?>
+</div>
+
+<div>
     <form method="post" action="/haushalt/setFinance">
         <div>
             <div>

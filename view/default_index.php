@@ -1,5 +1,11 @@
 <div>
     <!-- Main Form -->
+    <?php if(isset($_SESSION['error'])){
+        echo '<div class="alert alert-danger">';
+        echo $error;
+        echo '</div>';
+    }?>
+
     <div>
         <form method="post" action="/haushalt/login">
             <div>
