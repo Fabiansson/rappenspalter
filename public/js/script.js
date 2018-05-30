@@ -1,6 +1,5 @@
-function hideDropdown(){
+function hideDropdown() {
     document.getElementById("statusForm").style.visibility = "hidden";
-
 }
 
 function showDropdown() {

@@ -8,9 +8,7 @@
 
     <div>
         <div id="guthaben">
-            <p>
-                <?= $guthaben ?> CHF
-            </p>
+            <p><?= $guthaben ?> CHF</p>
         </div>
         <div class="schrift">
             <p> Budget für Heute: <?= $tagesbudget ?></p>
