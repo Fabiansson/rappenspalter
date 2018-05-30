@@ -12,11 +12,11 @@
         <div>
             <div>
                 <label for="username">Fixe Einnahme</label>
-                <input type="text" class="form-control" name="fixE" value="<?= $mntlEinnahmen ?>">
+                <input type="number" class="form-control" name="fixE" value="<?= $mntlEinnahmen ?>" required>
             </div>
             <div class="form-group">
                 <label for="password">Fixe Ausgaben</label>
-                <input type="text" class="form-control" name="fixA" value="<?= $mntlAusgaben ?>">
+                <input type="number" class="form-control" name="fixA" value="<?= $mntlAusgaben ?>" required>
             </div>
             <div>
                 <input type="submit" name="menuSubmit" value="OK" class="btn btn-normal">
