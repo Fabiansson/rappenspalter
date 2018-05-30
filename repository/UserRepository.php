@@ -57,7 +57,7 @@ class UserRepository extends Repository
         $query = "UPDATE {$this->tableName} SET mntlEinnahmen = ? WHERE id = ?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ii', $wert, $haushalt_id);
+        $statement->bind_param('di', $wert, $haushalt_id);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
@@ -71,7 +71,7 @@ class UserRepository extends Repository
         $query = "UPDATE {$this->tableName} SET mntlAusgaben = ? WHERE id = ?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ii', $wert, $haushalt_id);
+        $statement->bind_param('di', $wert, $haushalt_id);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
@@ -112,20 +112,5 @@ class UserRepository extends Repository
 
         // Das Statement absetzen
         $statement->execute();
-
-        // Resultat der Abfrage holen
-        $result = $statement->get_result();
-        if (!$result) {
-            throw new Exception($statement->error);
-        }
-
-        // Ersten Datensatz aus dem Reultat holen
-        $row = $result->fetch_object();
-
-        // Datenbankressourcen wieder freigeben
-        $result->close();
-
-        // Den gefundenen Datensatz zurückgeben
-        return $row;
     }
 }

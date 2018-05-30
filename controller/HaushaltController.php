@@ -48,21 +48,31 @@ class HaushaltController
     {
         if ($_POST['signup']) {
             $userRepository = new UserRepository();
+
+            //CHECKS USER INPUTS
             if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password']) && isset($_POST['mail']) && !empty($_POST['mail'])) {
                 $name = strtolower($_POST['username']);
                 $password = $_POST['password'];
                 $email = strtolower($_POST['mail']);
 
                 $duplicate = $userRepository->checkDuplicate($name);
+
+                if (!preg_match('/^[a-zA-Z0-9]{8,}$/', $password))
+                {
+                    $_SESSION['error'] = "Das Passwort muss aus min. 8 Zeichen bestehen und min. ein Gross- und Kleinbuchstabe enthalten.";
+                    $this->create();
+                    return;
+                }
             }
 
+            //CHECKS VALID EMAIL AND DUPLICATE ACCOUNT BY NAME
             if (filter_var($email, FILTER_VALIDATE_EMAIL) && !$duplicate) {
                 $userRepository = new UserRepository();
                 $userRepository->create($name, $password, $email);
                 header('Location: /haushalt');
             }
             else{
-                $_SESSION['error'] = "Dieser Benutzername oder Email exisitieren bereits!";
+                $_SESSION['error'] = "Dieser Benutzername bzw Email exisitieren bereits oder Email ist ungültig!";
                 $this->create();
             }
         }
@@ -72,9 +82,7 @@ class HaushaltController
     {
         $userRepository = new UserRepository();
         $userRepository->deleteById($_SESSION['user']->id);
-
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /haushalt');
+        $this->logout();
     }
 
     /**
@@ -105,9 +113,9 @@ class HaushaltController
         $alleEinnahmen = $einnahmen->summe;
 
         $guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $alleAusgaben + $alleEinnahmen;
-        $view->guthaben = $guthaben;
+        $view->guthaben = number_format((float)$guthaben, 2, '.', '');
 
-        $view->tagesbudget = $guthaben / 30;
+        $view->tagesbudget = number_format(((float)$guthaben / 30), 2, '.', '');
 
         $view->display();
         unset($_SESSION['error']);
@@ -172,17 +180,25 @@ class HaushaltController
     public function add()
     {
         if (isset($_POST['add']) && isset($_POST['wert']) && isset($_POST['auswahl'])) {
-            $wert = $_POST['wert'];
-            if ($_POST['auswahl'] == "ausgaben" && isset($_POST['kategorie'])) {
-                $ausgabeRepo = new AusgabeRepository();
-                $ausgabeRepo->addAusgabe($wert, $_POST['kategorie'], $_SESSION['user']->id);
-                header("Location: /haushalt/overview");
-            } elseif ($_POST['auswahl'] == "einnahmen") {
-                $einnahmeRepo = new EinnahmeRepository();
-                $einnahmeRepo->addEinnahme($wert, $_SESSION['user']->id);
-                header("Location: /haushalt/overview");
+            if(preg_match('/^[0-9]+(?:\.[0-9]+)?$/', $_POST['wert'])) {
+                $wert = $_POST['wert'];
+                var_dump($wert);
+                if ($_POST['auswahl'] == "ausgaben" && isset($_POST['kategorie'])) {
+                    $ausgabeRepo = new AusgabeRepository();
+                    $ausgabeRepo->addAusgabe($wert, $_POST['kategorie'], $_SESSION['user']->id);
+                    header("Location: /haushalt/overview");
+                } elseif (isset($_POST['wert']) && $_POST['auswahl'] == "einnahmen") {
+                    $einnahmeRepo = new EinnahmeRepository();
+                    $einnahmeRepo->addEinnahme($wert, $_SESSION['user']->id);
+                    header("Location: /haushalt/overview");
+                }
+            }else{
+                $_SESSION['error'] = "Ungültige Eingabe!";
+                header('Location: /haushalt');
             }
-
+        }else {
+            $_SESSION['error'] = "Ungültige Auswahl!";
+            heder('Location: /haushalt');
         }
     }
 
@@ -192,15 +208,22 @@ class HaushaltController
             $einnahmen = $_POST['fixE'];
             $ausgaben = $_POST['fixA'];
 
-            $userRepo = new UserRepository();
-            $userRepo->setEinnahmen($einnahmen, $_SESSION['user']->id);
-            $userRepo->setAusgaben($ausgaben, $_SESSION['user']->id);
+            if(preg_match('/^\d+$/', $einnahmen) && preg_match( '/^\d+$/', $ausgaben)) {
 
-            $_SESSION['user'] = $userRepo->readById($_SESSION['user']->id);
+                $userRepo = new UserRepository();
+                $userRepo->setEinnahmen($einnahmen, $_SESSION['user']->id);
+                $userRepo->setAusgaben($ausgaben, $_SESSION['user']->id);
 
-            header("Location: /haushalt/overview");
+                $_SESSION['user'] = $userRepo->readById($_SESSION['user']->id);
 
-
+                header("Location: /haushalt/overview");
+            }else{
+                $_SESSION['error'] = "Ungültige eingabe";
+                header('Location: /haushalt/menu');
+            }
+        }else{
+            $_SESSION['error'] = "Konnte nicht übermittelt werden!";
+            header('Location: /haushalt/menu');
         }
     }
 }
