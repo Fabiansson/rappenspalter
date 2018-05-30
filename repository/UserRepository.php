@@ -77,15 +77,7 @@ class UserRepository extends Repository
             throw new Exception($statement->error);
         }
 
-        $result = $statement->getResult();
-
-        $ausgaben = $result->fetch_object();
-
-        // Datenbankressourcen wieder freigeben
-        $result->close();
-
-        // Den gefundenen Datensatz zurückgeben
-        return $ausgaben;
+        return $statement->insert_id;
     }
 
     public function checkDuplicate($name){
