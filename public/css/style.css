@@ -1,53 +1,56 @@
-nav{
-  margin-left: 20px;
+html {
+  position: relative;
+  min-height: 100%;
 }
-#logo{
-  text-align: center;
-}
+
 body {
+  margin: 0 0 150px;
   padding-top: 40px;
   background-color: #4A849F;
-}
-
-h1 {
-  text-align: center;
-}
-
-#guthaben {
-  font-size: 5em;
-  text-align: center;
-}
-
-.schrift {
-  font-size: 1.5em;
-}
-div {
-  padding: 10px;
-}
-
-.abstand{
-  margin-left: 3%;
-}
-
-input[type="submit" i]{
-  padding: 2px 40px;
-}
-
-a {
-  color: #1B3440;
-  text-decoration-line: underline;
-}
-
-footer {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
 }
 
 .container{
   padding-left: 10%;
   padding-right: 10%;
 }
+
+/*HEADER*/
+#logo{
+  text-align: center;
+}
+h1 {
+  text-align: center;
+}
+
+nav{
+  margin-left: 20px;
+}
+
+/*GENERAL*/
+div {
+  padding: 10px;
+}
+.schrift {
+  font-size: 1.5em;
+}
+a {
+  color: #1B3440;
+  text-decoration-line: underline;
+}
+
+
+.abstand{
+  margin-left: 3%;
+}
+input[type="submit" i]{
+  padding: 2px 40px;
+}
+#guthaben {
+  font-size: 5em;
+  text-align: center;
+}
+
+/*BUTTONS & MESSAGES*/
 .btn-normal{
   color: #F2845C;
   background-color: #1B3440;
@@ -62,4 +65,14 @@ footer {
 }
 .validation-success {
   border: 1px solid #00FF00;
+}
+
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
 }

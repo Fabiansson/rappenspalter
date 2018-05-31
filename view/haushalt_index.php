@@ -4,7 +4,12 @@
             echo '<div class="alert alert-danger">';
             echo $error;
             echo '</div>';
-        }?>
+        }
+        if(($_SESSION['user']->mntlAusgaben) == 0 || ($_SESSION['user']->mntlEinnahmen) == 0){
+            echo '<div class="alert alert-success schrift text-center">Willkommen! Um loszulegen, gehen Sie ins <a href="/haushalt/Menu">Menu</a> um Ihre fixen Ein- und Ausgaben einzutragen!</div>';
+        }
+
+        ?>
 
     <div>
         <div id="guthaben">

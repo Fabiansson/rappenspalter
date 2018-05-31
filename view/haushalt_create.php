@@ -24,6 +24,7 @@
                 </div>
                 <div>
                     <input type="submit" name="signup" value="Erstelllen" class="btn btn-normal">
+                    <div class="g-recaptcha" data-sitekey="6LdRS1wUAAAAAOlNJoIH77JXW2kv0txiqAy43gVp"></div>
                 </div>
             </div>
         </div>

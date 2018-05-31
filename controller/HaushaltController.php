@@ -57,7 +57,7 @@ class HaushaltController
 
                 $duplicate = $userRepository->checkDuplicate($name);
 
-                if (!preg_match('/^[a-zA-Z0-9]{8,}$/', $password))
+                if (!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $password))
                 {
                     $_SESSION['error'] = "Das Passwort muss aus min. 8 Zeichen bestehen und min. ein Gross- und Kleinbuchstabe enthalten.";
                     $this->create();
