@@ -16,10 +16,11 @@
             <p><?= $guthaben ?> CHF</p>
         </div>
         <div class="schrift">
-            <p> Budget für Heute: <?= $tagesbudget ?></p>
+            <p> Tagesbudget: <?= $tagesbudget ?></p>
         </div>
         <div class="schrift">
             <p> Letzte Ausgaben: </p>
+            <?php echo $letzteAusgaben; ?>
         </div>
         <form method="post" action="/haushalt/add">
             <div class="row">

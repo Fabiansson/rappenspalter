@@ -100,9 +100,10 @@ class HaushaltController
 
         $view = new View('haushalt_index');
         $view->title = "Übresicht";
-        $view->heading = "Willkommen " . lcfirst($_SESSION['user']->name);
-        $view->name = lcfirst($_SESSION['user']->name);
+        $view->heading = "Willkommen " . ucfirst($_SESSION['user']->name);
+        $view->name = ucfirst($_SESSION['user']->name);
         $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
+        $view->letzteAusgaben = getLettzeAusgaben(); ///////////////////////////////////////////////////////////////HIER VERBLIEBEN
 
         $ausgabenRepo = new AusgabeRepository();
         $ausgaben = $ausgabenRepo->getAusgaben($id);

@@ -1,5 +1,5 @@
 <footer>
-          <p>&copy; Debian</p>
+          <p>&copy; by Debian 2018</p>
         </footer>
     </div>
 
