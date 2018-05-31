@@ -75,6 +75,9 @@ class HaushaltController
                 $_SESSION['error'] = "Dieser Benutzername bzw Email exisitieren bereits oder Email ist ungültig!";
                 $this->create();
             }
+        }else{
+            $_SESSION['error'] = "Haushalt kann so nicht erstellt werden!";
+            header('Location: /haushalt');
         }
     }
 
