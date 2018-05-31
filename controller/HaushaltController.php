@@ -226,4 +226,11 @@ class HaushaltController
             header('Location: /haushalt/menu');
         }
     }
+
+    public function pageNotFound(){
+        $view = new View('pageNotFound');
+        $view->title = '404';
+        $view->heading = 'Die Seite konnte nicht gefunden werden!';
+        $view->display();
+    }
 }
