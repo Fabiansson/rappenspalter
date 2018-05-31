@@ -57,8 +57,7 @@ class HaushaltController
 
                 $duplicate = $userRepository->checkDuplicate($name);
 
-                if (!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $password))
-                {
+                if (!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $password)) {
                     $_SESSION['error'] = "Das Passwort muss aus min. 8 Zeichen bestehen und min. ein Gross- und Kleinbuchstabe enthalten.";
                     $this->create();
                     return;
@@ -70,12 +69,11 @@ class HaushaltController
                 $userRepository = new UserRepository();
                 $userRepository->create($name, $password, $email);
                 header('Location: /haushalt');
-            }
-            else{
+            } else {
                 $_SESSION['error'] = "Dieser Benutzername bzw Email exisitieren bereits oder Email ist ungültig!";
                 $this->create();
             }
-        }else{
+        } else {
             $_SESSION['error'] = "Haushalt kann so nicht erstellt werden!";
             header('Location: /haushalt');
         }
@@ -111,7 +109,6 @@ class HaushaltController
         $view->heading = "Willkommen " . ucfirst($_SESSION['user']->name);
         $view->name = ucfirst($_SESSION['user']->name);
         $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
-        //$view->verlauf = $this->getVerlauf(); ///////////////////////////////////////////////////////////////HIER VERBLIEBEN
 
         $ausgabenRepo = new AusgabeRepository();
         $ausgaben = $ausgabenRepo->getAusgaben($id);
@@ -129,13 +126,6 @@ class HaushaltController
         $view->display();
         unset($_SESSION['error']);
 
-    }
-
-    public function getVerlauf(){
-        $ausgabenRepo = new AusgabeRepository();
-        $ausgaben = $ausgabenRepo->getVerlauf($_SESSION['user']->id);
-
-        return $ausgaben;
     }
 
     /**
@@ -161,7 +151,7 @@ class HaushaltController
                 header("Location: /haushalt");
                 return;
             }
-        }else{
+        } else {
             $_SESSION['error'] = "Bereits eingelogt!";
             header('Location: /haushalt');
         }
@@ -199,7 +189,7 @@ class HaushaltController
     public function add()
     {
         if (isset($_POST['add']) && isset($_POST['wert']) && isset($_POST['auswahl'])) {
-            if(preg_match('/^[0-9]+(?:\.[0-9]+)?$/', $_POST['wert'])) {
+            if (preg_match('/^[0-9]+(?:\.[0-9]+)?$/', $_POST['wert'])) {
                 $wert = $_POST['wert'];
                 var_dump($wert);
                 if ($_POST['auswahl'] == "ausgaben" && isset($_POST['kategorie'])) {
@@ -211,11 +201,11 @@ class HaushaltController
                     $einnahmeRepo->addEinnahme($wert, $_SESSION['user']->id);
                     header("Location: /haushalt/overview");
                 }
-            }else{
+            } else {
                 $_SESSION['error'] = "Ungültige Eingabe!";
                 header('Location: /haushalt');
             }
-        }else {
+        } else {
             $_SESSION['error'] = "Ungültige Auswahl!";
             header('Location: /haushalt');
         }
@@ -227,7 +217,7 @@ class HaushaltController
             $einnahmen = $_POST['fixE'];
             $ausgaben = $_POST['fixA'];
 
-            if(preg_match('/^\d+$/', $einnahmen) && preg_match( '/^\d+$/', $ausgaben)) {
+            if (preg_match('/^\d+$/', $einnahmen) && preg_match('/^\d+$/', $ausgaben)) {
 
                 $userRepo = new UserRepository();
                 $userRepo->setEinnahmen($einnahmen, $_SESSION['user']->id);
@@ -236,17 +226,18 @@ class HaushaltController
                 $_SESSION['user'] = $userRepo->readById($_SESSION['user']->id);
 
                 header("Location: /haushalt/overview");
-            }else{
+            } else {
                 $_SESSION['error'] = "Ungültige eingabe";
                 header('Location: /haushalt/menu');
             }
-        }else{
+        } else {
             $_SESSION['error'] = "Konnte nicht übermittelt werden!";
             header('Location: /haushalt/menu');
         }
     }
 
-    public function pageNotFound(){
+    public function pageNotFound()
+    {
         $view = new View('pageNotFound');
         $view->title = '404';
         $view->heading = 'Die Seite konnte nicht gefunden werden!';

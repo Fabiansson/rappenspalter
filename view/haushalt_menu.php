@@ -11,11 +11,11 @@
     <form method="post" action="/haushalt/setFinance">
         <div>
             <div>
-                <label for="username">Fixe Einnahme</label>
+                <label for="fixE">Fixe Einnahme</label>
                 <input type="number" class="form-control" name="fixE" value="<?= $mntlEinnahmen ?>" required>
             </div>
-            <div class="form-group">
-                <label for="password">Fixe Ausgaben</label>
+            <div>
+                <label for="fixA">Fixe Ausgaben</label>
                 <input type="number" class="form-control" name="fixA" value="<?= $mntlAusgaben ?>" required>
             </div>
             <div>
@@ -23,9 +23,11 @@
             </div>
         </div>
     </form>
+    <div>
 <form method="post" action="/haushalt/delete">
     <input type="submit" name="delete" value="Account Löschen" class="btn btn-danger" onclick="return confirm('Alle Ihre Daten werden gelöscht, sind Sie sicher?');">
 </form>
+    </div>
 
 </div>
 
