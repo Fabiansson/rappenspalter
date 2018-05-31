@@ -14,6 +14,7 @@ RewriteEngine On
 # Bilder) nicht mehr abgerufen werden können.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_METHOD} !^PUT
 
 # Leite alle anderen Anfragen auf die Datei index.php um.
 RewriteRule ^.*$ index.php [PT,L]
