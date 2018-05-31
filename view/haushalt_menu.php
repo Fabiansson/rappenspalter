@@ -23,8 +23,10 @@
             </div>
         </div>
     </form>
-<div id="deleteButton">
-    <a href="/haushalt/delete" class="btn btn-danger">Account Löschen</a>
+<form method="post" action="/haushalt/delete">
+    <input type="submit" name="delete" value="Account Löschen" class="btn btn-danger" onclick="return confirm('Alle Ihre Daten werden gelöscht, sind Sie sicher?');">
+</form>
+
 </div>
 
 </div>

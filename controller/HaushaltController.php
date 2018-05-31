@@ -80,9 +80,14 @@ class HaushaltController
 
     public function delete()
     {
-        $userRepository = new UserRepository();
-        $userRepository->deleteById($_SESSION['user']->id);
-        $this->logout();
+        if (isset($_POST['delete'])) {
+            $userRepository = new UserRepository();
+            $userRepository->deleteById($_SESSION['user']->id);
+            $this->logout();
+        } else {
+            $_SESSION['error'] = "Haushalt kann nicht gelöscht werden!";
+            header('Location: /haushalt');
+        }
     }
 
     /**
@@ -103,7 +108,7 @@ class HaushaltController
         $view->heading = "Willkommen " . ucfirst($_SESSION['user']->name);
         $view->name = ucfirst($_SESSION['user']->name);
         $view->error = (isset($_SESSION['error'])) ? $_SESSION['error'] : "";
-        $view->letzteAusgaben = getLettzeAusgaben(); ///////////////////////////////////////////////////////////////HIER VERBLIEBEN
+        //$view->verlauf = $this->getVerlauf(); ///////////////////////////////////////////////////////////////HIER VERBLIEBEN
 
         $ausgabenRepo = new AusgabeRepository();
         $ausgaben = $ausgabenRepo->getAusgaben($id);
@@ -121,6 +126,13 @@ class HaushaltController
         $view->display();
         unset($_SESSION['error']);
 
+    }
+
+    public function getVerlauf(){
+        $ausgabenRepo = new AusgabeRepository();
+        $ausgaben = $ausgabenRepo->getVerlauf($_SESSION['user']->id);
+
+        return $ausgaben;
     }
 
     /**
@@ -146,6 +158,9 @@ class HaushaltController
                 header("Location: /haushalt");
                 return;
             }
+        }else{
+            $_SESSION['error'] = "Bereits eingelogt!";
+            header('Location: /haushalt');
         }
     }
 
@@ -199,7 +214,7 @@ class HaushaltController
             }
         }else {
             $_SESSION['error'] = "Ungültige Auswahl!";
-            heder('Location: /haushalt');
+            header('Location: /haushalt');
         }
     }
 

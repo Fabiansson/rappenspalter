@@ -19,8 +19,10 @@
             <p> Tagesbudget: <?= $tagesbudget ?></p>
         </div>
         <div class="schrift">
-            <p> Letzte Ausgaben: </p>
-            <?php echo $letzteAusgaben; ?>
+            <p> Verlauf: </p>
+            <?php echo '<p>';
+            echo $verlauf;
+            echo '</p>'; ?>
         </div>
         <form method="post" action="/haushalt/add">
             <div class="row">

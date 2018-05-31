@@ -25,7 +25,6 @@
             </div>
         </form>
         <div class="abstand">
-            <p><a href="#">Passwort vergessen?</a></p>
             <p><a href="/haushalt/create">Neuer Haushalt?</a></p>
         </div>
     </div>
