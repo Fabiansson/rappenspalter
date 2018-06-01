@@ -63,16 +63,16 @@ class HaushaltController {
                     $this->create();
                     return;
                 }
-            }
-
-            //Überprüft ob eine gültige Email eingegeben wurde und ob der Benutzer noch nicht exisitert.
-            if (filter_var($email, FILTER_VALIDATE_EMAIL) && !$duplicate) {
-                $userRepository = new UserRepository();
-                $userRepository->create($name, $password, $email);
-                header('Location: /haushalt');
-            } else {
-                $_SESSION['error'] = "Dieser Benutzername bzw Email exisitieren bereits oder Email ist ungültig!";
-                $this->create();
+                //Überprüft ob eine gültige Email eingegeben wurde und ob der Benutzer noch nicht exisitert.
+                if (filter_var($email, FILTER_VALIDATE_EMAIL) && !$duplicate) {
+                    $userRepository = new UserRepository();
+                    $userRepository->create($name, $password, $email);
+                    header('Location: /haushalt');
+                } else {
+                    $_SESSION['error'] = "Dieser Benutzername bzw Email exisitieren bereits oder Email ist ungültig!";
+                    $this->create();
+                    return;
+                }
             }
         } else {
             $_SESSION['error'] = "Haushalt kann so nicht erstellt werden!";
