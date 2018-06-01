@@ -41,11 +41,15 @@ class HaushaltController {
         unset($_SESSION['error']);
     }
 
+    /**
+     * Diese Methode erstellt den eigentlichen Benutzer.
+     * @throws Exception
+     */
     public function doCreate() {
         if ($_POST['signup']) {
             $userRepository = new UserRepository();
 
-            //CHECKS USER INPUTS
+            //Überprüft die Eingaben des Benutzers grob
             if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password']) && isset($_POST['mail']) && !empty($_POST['mail'])) {
                 $name = strtolower($_POST['username']);
                 $password = $_POST['password'];
@@ -53,6 +57,7 @@ class HaushaltController {
 
                 $duplicate = $userRepository->checkDuplicate($name);
 
+                //Hier wird sichergestellt, dass das Passwort einen gewissen Sicherheitsstandart hat.
                 if (!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $password)) {
                     $_SESSION['error'] = "Das Passwort muss aus min. 8 Zeichen bestehen und min. ein Gross- und Kleinbuchstabe enthalten.";
                     $this->create();
@@ -60,7 +65,7 @@ class HaushaltController {
                 }
             }
 
-            //CHECKS VALID EMAIL AND DUPLICATE ACCOUNT BY NAME
+            //Überprüft ob eine gültige Email eingegeben wurde und ob der Benutzer noch nicht exisitert.
             if (filter_var($email, FILTER_VALIDATE_EMAIL) && !$duplicate) {
                 $userRepository = new UserRepository();
                 $userRepository->create($name, $password, $email);
@@ -75,6 +80,9 @@ class HaushaltController {
         }
     }
 
+    /**
+     * Diese Methode löscht einen Benutzer.
+     */
     public function delete() {
         if (isset($_POST['delete'])) {
             $userRepository = new UserRepository();
@@ -112,6 +120,7 @@ class HaushaltController {
         $einnahmen = $einnahmenRepo->getEinnahmen($id);
         $alleEinnahmen = $einnahmen->summe;
 
+        //Berechnet das übrige Guthaben indem die monatlichen Einnahmen - die mntl. Ausgaben und die Aus- und Einnahmen aus diesem Monat beachtet werden.
         $guthaben = ($_SESSION['user']->mntlEinnahmen) - ($_SESSION['user']->mntlAusgaben) - $alleAusgaben + $alleEinnahmen;
         $view->guthaben = number_format((float)$guthaben, 2, '.', '');
 
@@ -150,6 +159,9 @@ class HaushaltController {
         }
     }
 
+    /**
+     * Diese Methode ruft das Menu auf wo der Haushalt gelöscht werden kann und die fixen monatlichen Ein- und Ausgaben egetragen werden könnnen.
+     */
     public function menu() {
         if (!isset($_SESSION['user'])) {
             header("Location: /haushalt");
@@ -177,6 +189,9 @@ class HaushaltController {
         header('Location: /haushalt');
     }
 
+    /**
+     * Diese Methode dient dazu zum Hinzufügen von Ein- und Ausgaben
+     */
     public function add() {
         if (isset($_POST['add']) && isset($_POST['wert']) && isset($_POST['auswahl'])) {
             if (preg_match('/^[0-9]+(?:\.[0-9]+)?$/', $_POST['wert'])) {
@@ -201,6 +216,9 @@ class HaushaltController {
         }
     }
 
+    /**
+     * Diese Methode setzt die fixen monatlichen Ein- und Ausgaben aus dem Menu.
+     */
     public function setFinance() {
         if (isset($_POST['menuSubmit']) && isset($_POST['fixE']) && isset($_POST['fixA'])) {
             $einnahmen = $_POST['fixE'];

@@ -5,7 +5,15 @@ require_once '../lib/Repository.php';
 class UserRepository extends Repository {
     protected $tableName = 'haushalt';
 
-
+    /**
+     * Diese Methode erstellt einen Haushaltsaccount.
+     *
+     * @param $name Haushaltsname
+     * @param $password
+     * @param $email
+     * @return mixed
+     * @throws Exception
+     */
     public function create($name, $password, $email) {
         $password = sha1($password);
 
@@ -22,30 +30,23 @@ class UserRepository extends Repository {
     }
 
     public function readByName($name) {
-        // Query erstellen
+
         $query = "SELECT * FROM {$this->tableName} WHERE name = ?";
 
-        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
-        // und die Parameter "binden"
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('s', $name);
 
-        // Das Statement absetzen
         $statement->execute();
 
-        // Resultat der Abfrage holen
         $result = $statement->get_result();
         if (!$result) {
             throw new Exception($statement->error);
         }
 
-        // Ersten Datensatz aus dem Reultat holen
         $row = $result->fetch_object();
 
-        // Datenbankressourcen wieder freigeben
         $result->close();
 
-        // Den gefundenen Datensatz zurückgeben
         return $row;
     }
 
@@ -75,6 +76,13 @@ class UserRepository extends Repository {
         return $statement->insert_id;
     }
 
+    /**
+     * Diese Methode prüft ob ein Haushalt mit diesem namen bereits existiert oder nicht.
+     *
+     * @param $name Eingegebener Name
+     * @return bool Ob der Haushalt bereits exisiert oder nicht.
+     * @throws Exception
+     */
     public function checkDuplicate($name) {
         $query = "SELECT * FROM {$this->tableName} WHERE name = ?";
 
@@ -96,6 +104,12 @@ class UserRepository extends Repository {
         return !($duplicate == NULL);
     }
 
+    /**
+     * Diese Methode dient zum löschen eines Haushalts.
+     *
+     * @param id $id HaushaltsID die gelöscht werden soll.
+     * @throws Exception
+     */
     public function deleteById($id) {
         $query = "DELETE FROM {$this->tableName} WHERE id=?";
 
