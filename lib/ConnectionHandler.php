@@ -13,8 +13,7 @@
  *   // ...
  *   $connection = ConnectionHandler::getConnection();
  */
-class ConnectionHandler
-{
+class ConnectionHandler {
     /**
      * Beim ersten Aufruf der getConnection Methode wird hier die Verbindung für
      * die weiteren Aufrufe dieser Methode zwischengespeichert. Dadurch muss
@@ -28,8 +27,7 @@ class ConnectionHandler
      * Instanz existiert. Dies wird erreicht, indem der Konstruktor private ist
      * und die Methode getInstance die Instanzierung verwaltet.
      */
-    private function __construct()
-    {
+    private function __construct() {
         // Privater Konstruktor um die Verwendung von getInstance zu erzwingen.
     }
 
@@ -42,8 +40,7 @@ class ConnectionHandler
      * @return Die MySQLi Verbindung, welche für den Zugriff aud die Datenbank
      *             verwendet werden kann.
      */
-    public static function getConnection()
-    {
+    public static function getConnection() {
         // Prüfen ob bereits eine Verbindung existiert
         if (self::$connection === null) {
 

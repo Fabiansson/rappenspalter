@@ -2,13 +2,11 @@
 
 require_once '../lib/Repository.php';
 
-class UserRepository extends Repository
-{
+class UserRepository extends Repository {
     protected $tableName = 'haushalt';
 
 
-    public function create($name, $password, $email)
-    {
+    public function create($name, $password, $email) {
         $password = sha1($password);
 
         $query = "INSERT INTO {$this->tableName} (name, password, email) VALUES (?, ?, ?)";
@@ -23,8 +21,7 @@ class UserRepository extends Repository
         return $statement->insert_id;
     }
 
-    public function readByName($name)
-    {
+    public function readByName($name) {
         // Query erstellen
         $query = "SELECT * FROM {$this->tableName} WHERE name = ?";
 
@@ -52,8 +49,7 @@ class UserRepository extends Repository
         return $row;
     }
 
-    public function setEinnahmen($wert, $haushalt_id)
-    {
+    public function setEinnahmen($wert, $haushalt_id) {
         $query = "UPDATE {$this->tableName} SET mntlEinnahmen = ? WHERE id = ?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -66,8 +62,7 @@ class UserRepository extends Repository
         return $statement->insert_id;
     }
 
-    public function setAusgaben($wert, $haushalt_id)
-    {
+    public function setAusgaben($wert, $haushalt_id) {
         $query = "UPDATE {$this->tableName} SET mntlAusgaben = ? WHERE id = ?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -80,7 +75,7 @@ class UserRepository extends Repository
         return $statement->insert_id;
     }
 
-    public function checkDuplicate($name){
+    public function checkDuplicate($name) {
         $query = "SELECT * FROM {$this->tableName} WHERE name = ?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -101,8 +96,7 @@ class UserRepository extends Repository
         return !($duplicate == NULL);
     }
 
-    public function deleteById($id)
-    {
+    public function deleteById($id) {
         $query = "DELETE FROM {$this->tableName} WHERE id=?";
 
         // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)

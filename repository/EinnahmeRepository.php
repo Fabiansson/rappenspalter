@@ -2,12 +2,10 @@
 
 require_once '../lib/Repository.php';
 
-class EinnahmeRepository extends Repository
-{
+class EinnahmeRepository extends Repository {
     protected $tableName = 'einnahme';
 
-    public function getEinnahmen($id)
-    {
+    public function getEinnahmen($id) {
 
         $query = "SELECT SUM(wert) as summe FROM {$this->tableName} WHERE haushalt_id=?";
 
@@ -32,8 +30,7 @@ class EinnahmeRepository extends Repository
         return $einnahmen;
     }
 
-    public function addEinnahme($wert, $haushalt_id)
-    {
+    public function addEinnahme($wert, $haushalt_id) {
 
         $query = "INSERT INTO $this->tableName (wert, datum, haushalt_id) VALUES (?, ?, ?)";
 

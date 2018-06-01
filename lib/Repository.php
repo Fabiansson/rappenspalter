@@ -73,8 +73,7 @@ require_once 'ConnectionHandler.php';
  *     throw new Exception("Ein Fehler ist aufgetreten: $result->error");
  *   }
  */
-class Repository
-{
+class Repository {
     /**
      * Damit die generischen Querys wisse, um welche Tabelle es sich handelt,
      * gibt es diese Variabel. Diese muss in den konkreten Implementationen mit
@@ -91,8 +90,7 @@ class Repository
      *
      * @return Der gesuchte Datensatz oder null, sollte dieser nicht existieren.
      */
-    public function readById($id)
-    {
+    public function readById($id) {
         // Query erstellen
         $query = "SELECT * FROM {$this->tableName} WHERE id=?";
 
@@ -131,8 +129,7 @@ class Repository
      *
      * @return Ein array mit den gefundenen Datensätzen.
      */
-    public function readAll($max = 100)
-    {
+    public function readAll($max = 100) {
         $query = "SELECT * FROM {$this->tableName} LIMIT 0, $max";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -159,8 +156,7 @@ class Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-    public function deleteById($id)
-    {
+    public function deleteById($id) {
         $query = "DELETE FROM {$this->tableName} WHERE id=?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);

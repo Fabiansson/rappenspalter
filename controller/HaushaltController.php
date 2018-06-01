@@ -4,22 +4,20 @@ require_once '../repository/UserRepository.php';
 require_once '../repository/AusgabeRepository.php';
 require_once '../repository/EinnahmeRepository.php';
 
-class HaushaltController
-{
+class HaushaltController {
 
     /**
      * Einstigesseite (Anzeige vom Loginformular)
+     *
      */
-    public function index()
-    {
+    public function index() {
         $this->form();
     }
 
     /**
-     * Login-Formular (nur falls nicht angemeldet)
+     * Login-Formular (prüft ob angemeldet oder nicht, sonst zum Login Formular)
      */
-    public function form()
-    {
+    public function form() {
         if (isset($_SESSION['user'])) {
             header("Location: /haushalt/overview");
             return;
@@ -34,8 +32,7 @@ class HaushaltController
         unset($_SESSION['error']);
     }
 
-    public function create()
-    {
+    public function create() {
         $view = new View('haushalt_create');
         $view->title = 'Haushalt erstellen';
         $view->heading = 'Haushalt erstellen';
@@ -44,8 +41,7 @@ class HaushaltController
         unset($_SESSION['error']);
     }
 
-    public function doCreate()
-    {
+    public function doCreate() {
         if ($_POST['signup']) {
             $userRepository = new UserRepository();
 
@@ -79,8 +75,7 @@ class HaushaltController
         }
     }
 
-    public function delete()
-    {
+    public function delete() {
         if (isset($_POST['delete'])) {
             $userRepository = new UserRepository();
             $userRepository->deleteById($_SESSION['user']->id);
@@ -94,8 +89,7 @@ class HaushaltController
     /**
      * Benutzerübersicht
      */
-    public function overview()
-    {
+    public function overview() {
         if (!isset($_SESSION['user'])) {
             header("Location: /haushalt");
             return;
@@ -131,8 +125,7 @@ class HaushaltController
     /**
      * Login-Aktion (keine HTML-Ausgabe, nur Umleitung)
      */
-    public function login()
-    {
+    public function login() {
         if (isset($_POST['login'])) {
 
             $name = strtolower($_POST['username']);
@@ -157,8 +150,7 @@ class HaushaltController
         }
     }
 
-    public function menu()
-    {
+    public function menu() {
         if (!isset($_SESSION['user'])) {
             header("Location: /haushalt");
             return;
@@ -177,8 +169,7 @@ class HaushaltController
     /**
      * Logout-Aktion (keine HTML-Ausgabe, nur Umleitung)
      */
-    public function logout()
-    {
+    public function logout() {
 
         unset($_SESSION['user']);
         session_destroy();
@@ -186,8 +177,7 @@ class HaushaltController
         header('Location: /haushalt');
     }
 
-    public function add()
-    {
+    public function add() {
         if (isset($_POST['add']) && isset($_POST['wert']) && isset($_POST['auswahl'])) {
             if (preg_match('/^[0-9]+(?:\.[0-9]+)?$/', $_POST['wert'])) {
                 $wert = $_POST['wert'];
@@ -211,8 +201,7 @@ class HaushaltController
         }
     }
 
-    public function setFinance()
-    {
+    public function setFinance() {
         if (isset($_POST['menuSubmit']) && isset($_POST['fixE']) && isset($_POST['fixA'])) {
             $einnahmen = $_POST['fixE'];
             $ausgaben = $_POST['fixA'];
@@ -236,8 +225,7 @@ class HaushaltController
         }
     }
 
-    public function pageNotFound()
-    {
+    public function pageNotFound() {
         $view = new View('pageNotFound');
         $view->title = '404';
         $view->heading = 'Die Seite konnte nicht gefunden werden!';

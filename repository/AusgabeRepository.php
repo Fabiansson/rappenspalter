@@ -2,12 +2,10 @@
 
 require_once '../lib/Repository.php';
 
-class AusgabeRepository extends Repository
-{
+class AusgabeRepository extends Repository {
     protected $tableName = 'ausgabe';
 
-    public function getAusgaben($id)
-    {
+    public function getAusgaben($id) {
 
         $query = "SELECT SUM(wert) as summe FROM {$this->tableName} WHERE haushalt_id=?";
 
@@ -32,8 +30,7 @@ class AusgabeRepository extends Repository
         return $ausgaben;
     }
 
-    public function addAusgabe($wert, $kategorie_id, $haushalt_id)
-    {
+    public function addAusgabe($wert, $kategorie_id, $haushalt_id) {
 
         $query = "INSERT INTO $this->tableName (wert, datum, kategorie_id, haushalt_id) VALUES (?, ?, ?, ?)";
 

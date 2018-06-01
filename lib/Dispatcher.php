@@ -20,14 +20,12 @@
  *   Sollte ein Teil in der URI nicht vorhanden sein, wird als Controllername
  *     "DefaultController" bzw. "index" als Funktionsname verwendet.
  */
-class Dispatcher
-{
+class Dispatcher {
     /**
      * Diese Methode wertet die Request URI aus leitet die Anfrage entsprechend
      * weiter.
      */
-    public static function dispatch()
-    {
+    public static function dispatch() {
         // Die URI wird aus dem $_SERVER Array ausgelesen und in ihre
         //   Einzelteile zerlegt.
         // /user/index/foo --> ['user', 'index', 'foo']
@@ -54,18 +52,25 @@ class Dispatcher
 
         // Den gewünschten Controller laden
         //   Achtung! Hier stützt PHP ab, sollte der Controller nicht existieren
-        if(file_exists("../controller/" . $controllerName . ".php")){
+        if (file_exists("../controller/" . $controllerName . ".php")) {
             require_once "../controller/$controllerName.php";
             $controller = new $controllerName();
-            $controller->$method();
-        }else{
-
-            require_once "../controller/HaushaltController.php";
-            $controller = new HaushaltController();
-            $controller->pageNotFound();
-    }
+            if (method_exists($controller, $method)) {
+                $controller->$method();
+            } else {
+                self::pageNotFound();
+            }
+        } else {
+            self::pageNotFound();
+        }
         // Eine neue Instanz des Controllers wird erstellt und die gewünschte
         //   Methode darauf aufgerufen.
 
+    }
+
+    public static function pageNotFound() {
+        require_once "../controller/HaushaltController.php";
+        $controller = new HaushaltController();
+        $controller->pageNotFound();
     }
 }
