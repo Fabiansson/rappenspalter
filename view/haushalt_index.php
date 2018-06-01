@@ -10,7 +10,7 @@
     }
 
     ?>
-
+    <!-- Übersicht Window -->
     <div>
         <div id="guthaben">
             <p><span id="guthabenWert"><?= $guthaben ?></span> CHF</p>
@@ -18,7 +18,7 @@
         <div id="tagesguthaben">
             <p><span id="tagesguthabenWert"><?= $tagesbudget ?></span> pro Tag</p>
         </div>
-
+        <!-- Auswahl Eingaben & Ausgaben -->
         <form method="post" action="/haushalt/add">
             <div class="row" id="radios">
                 <div class="col-md-4 form-check">
@@ -38,6 +38,7 @@
                 <div id="wertInput">
                     <input type="text" class="form-control" name="wert" placeholder="CHF" required>
                 </div>
+                <!-- Auswahl der Ausgaben Kategorie -->
                 <div class="form-group" id="statusForm">
                     <select class="form-control" id="exampleSelect1" name="kategorie">
                         <option value="1">Sonstiges</option>

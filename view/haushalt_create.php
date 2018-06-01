@@ -6,6 +6,7 @@
         $_SESSION['error'] = "";
     } ?>
 </div>
+<!-- Create new Haushalt -->
 <div>
     <form method="post" action="/haushalt/doCreate">
         <div>

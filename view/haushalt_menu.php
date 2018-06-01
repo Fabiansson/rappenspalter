@@ -6,7 +6,7 @@
         $_SESSION['error'] = "";
     }?>
 </div>
-
+<!-- Menu Window -->
 <div>
     <form method="post" action="/haushalt/setFinance">
         <div>
