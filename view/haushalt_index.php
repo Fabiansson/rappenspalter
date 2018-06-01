@@ -48,7 +48,7 @@
                     </select>
                 </div>
                 <div>
-                    <input id="add" name="add" type="submit" class="btn btn-normal" value="Eintragen">
+                    <input id="add" name="add" type="submit" class="btn btn-normal" value="+">
                 </div>
             </div>
 

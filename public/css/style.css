@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    margin: 0 0 150px;
+    margin: 0 0 0px;
     padding-top: 40px;
     background-color: #4A849F;
     font-family: 'Nunito', sans-serif;
@@ -27,6 +27,12 @@ label {
 h1 {
     text-align: center;
     font-size: 5em;
+}
+@media screen and (max-width: 600px) {
+
+    .container{
+        font-size: xx-small;
+    }
 }
 
 nav {
